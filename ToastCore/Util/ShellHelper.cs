@@ -139,17 +139,14 @@ namespace ToastCore.Util {
     /// <summary>
     /// 对c++中一种结构的封装
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Sequential)]
     public sealed class PropVariant : IDisposable {
         #region Fields
 
-        [FieldOffset(0)]
-        decimal _decimal;
-        [FieldOffset(0)]
         ushort _valueType;
-        [FieldOffset(8)]
-        IntPtr _ptr2;
-        [FieldOffset(8)]
+        ushort wReserved1;
+        ushort wReserved2;
+        ushort wReserved3;
         IntPtr _ptr;
 
         #endregion 
@@ -169,14 +166,14 @@ namespace ToastCore.Util {
             }
             byte[] bytes = guid.ToByteArray();
             _valueType = (ushort)VarEnum.VT_CLSID;
-            _ptr2 = Marshal.AllocCoTaskMem(bytes.Length);
-            Marshal.Copy(bytes, 0, _ptr2, bytes.Length);
+            _ptr = Marshal.AllocCoTaskMem(bytes.Length);
+            Marshal.Copy(bytes, 0, _ptr, bytes.Length);
         }
 
         #endregion
 
         #region IDisposable Members
-        [DllImport("Ole32.dll", PreserveSig = false)] // returns hresult
+        [DllImport("Ole32.dll")] // returns hresult
         internal extern static void PropVariantClear([In, Out] PropVariant pvar);
 
         public void Dispose() {

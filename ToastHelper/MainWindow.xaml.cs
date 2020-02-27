@@ -38,7 +38,7 @@ namespace ToastHelper {
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-            _notify?.Invoke();
+            _notify?.BeginInvoke(null, null);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {

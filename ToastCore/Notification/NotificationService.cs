@@ -2,6 +2,7 @@
 /// @ Y_Theta
 ///------------------------------------------------------------------------------
 using System.Collections.Generic;
+using XML = System.Xml;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 
@@ -54,17 +55,17 @@ namespace ToastCore.Notification {
         /// </summary>
         public void Notify() {
             XmlDocument xml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText02);
-            OnSetNotifyXML(xml);
-            ShowToast(xml);
+            XML.XmlDocument xxml = new XML.XmlDocument();
+
+            OnSetNotifyXML(xml.GetXml());
+            // ShowToast(xml);
         }
 
         /// <summary>
         /// 重写此方法以自定义通知xml内容
         /// </summary>
         /// <param name="xml"></param>
-        protected virtual void OnSetNotifyXML(XmlDocument xml) {
-
-        }
+        protected virtual void OnSetNotifyXML(string xml) { }
 
         /// <summary>
         /// 发送一条通知 （标题/文本）
