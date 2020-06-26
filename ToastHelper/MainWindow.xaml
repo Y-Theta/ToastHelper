@@ -14,7 +14,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="48" />
+            <RowDefinition Height="32" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <ComboBox SelectedIndex="0"
@@ -28,5 +29,8 @@
         <TextBlock Grid.Row="1"
                    Grid.ColumnSpan="2"
                    Name="Input" />
+        <Button Grid.Row="2"
+                Click="Button_Click_1"
+                Grid.ColumnSpan="2">Click</Button>
     </Grid>
 </Window>

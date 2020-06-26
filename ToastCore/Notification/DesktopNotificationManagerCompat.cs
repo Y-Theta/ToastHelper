@@ -47,7 +47,7 @@ namespace ToastCore.Notification {
             {
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + shortpath);
                 // 不需要从通知打开程序则不需要这项操作
-                // RegisterComServer<T>(exePath);
+                RegisterComServer<T>(Process.GetCurrentProcess().MainModule.FileName);
                 CreatShortcut<T>(shortcut);
             }
 

@@ -93,9 +93,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ToastCore\ToastCore.csproj">
-      <Project>{18f57aa0-e5ed-4569-a074-a0c622d3d52b}</Project>
-      <Name>ToastCore</Name>
+    <ProjectReference Include="..\ToastCore[netcore]\ToastCore[netcore].csproj">
+      <Project>{508a4e59-c433-40f1-b708-a945077b1625}</Project>
+      <Name>ToastCore[netcore]</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
